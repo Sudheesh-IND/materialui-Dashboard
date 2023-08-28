@@ -1,0 +1,298 @@
+Admin adminDashboard...
+.......................
+
+1. Create a new project: ng new adminDashboard
+2.Run the project: ng serve --open
+3.Clear the code in app.component.html
+4.Install angular material ui ->ng add @angular material
+     style.import->node_modules\@angular\material\prebuilt-themes\purple-green.css 
+
+     add button from material
+       .................
+       in module.ts->import {MatButtonModule} from '@angular/material/button';
+                   ->import[
+                    MatButtonModule
+                   ]
+  
+        
+  5.create components
+   create header
+   create footer
+   create sidebar
+   main content
+
+   //inside dashboard
+   crate card
+   create areaChart
+   table
+   piechart
+
+  
+
+  6.Setting up path for each component-routing
+
+  inside app-routing.module.ts
+  //localhost:4200/contactManager
+
+  {
+    path:'', //this is the main path
+    redirectTo:'contactManager',pathMatch:'full'
+    this is just a redirection
+  }
+  ,
+  giving other paths
+  {
+    path:'contactManager',component:ContactManagerComponent
+  }
+
+  7.<router-outlet></router-outlet>
+  page to view requested components
+
+  8.design full pages
+
+  9.API Integration
+
+  fetch data and display
+ > Create a server folder
+ >crate it,crate a sever folder in src and create db.json file
+ >go to json placeholder -my json data-content
+
+ >create package.json inside server folder--- npm Initial
+ update package.json inside script as
+     "start": "json-server --watch db.json --port 3000"
+
+
+>install npm i json server
+>run backened--- npm start
+
+10.Create a model
+
+-create a model folder in  src folder
+-inside in it create my contact.ts filte and my group.ts file
+-export the class inside each file
+export class MyContact{
+    id?:string
+    name?:string
+    phone?:string
+    company?:string
+    email?:string
+    photo?:string
+    title?:string
+    groupId?:string
+    
+}
+
+starting of fetching the api.......
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+11.create services
+services-pass data from one component to another component
+        id differnet documents contain same data then we use
+        to create a service
+
+ng d s services-name=> ng g s services/api
+
+12.Asynchronous resolving
+
+  JS               ts
+promise         observable (from rxjs library)
+.then            .subscribe
+.catch           .catch
+
+then and subscribe always will be a call back function
+
+we use observable in place of java script in type script
+
+rxjs-Reactive extension javascript
+
+display all contact API
+create view contact API
+create edit contact API
+delete contact api
+
+13.to get htttp methods for api fetching
+  import http client module inside api.services
+  import{HttpClientModule} from'@angular/common/http'
+
+  import[
+    HttpClientModule
+  ]
+
+14.Dependency Injection
+   data share between two dependent classes
+   -It performs inside the constructor
+   construcctor-Special member function it executes first
+
+   syntax for DI-constructor(access-specifier variable-name:class name){}
+   access-specifier indicates who can access the constructior public or private
+
+15.ng oninit-It is a lifecycle hook
+   -starting stage of a component creation
+
+   inside on init
+   ..............
+   ngOnInit(): void {
+    //this is a refernce variable used to refer class and object
+
+     this.api.allContact().subscribe((data:MyContact)=>{
+       console.log(data)
+     })
+  }
+
+  thuss the values are printed on the console
+
+  16.Data Binding
+  ..................
+  Datas sharing inside a component-ts to html or html to ts
+   =>one way data binding(ts to html or html to ts)
+      1.Component to view(ts to html)
+        *string interpolation-{{variable-name}}(inside html)
+        *property Binding-[attribute nme]="property name"
+
+      2.view to component(html to ts)
+         *Event Binding
+
+         Events=>things happening to html elements when loading
+         eg: onclick,onfocus,onmouseover etc
+
+         *event binding using $event-$event is used in function argument
+         -(event-name)="function-name($event)" (html)
+         -function-name(event) (ts)
+
+   =>two way data binding
+   ......................
+   ->ngModel [(ngModel)]="propertyName"
+   -ngModel imports in app.module.ts-formsModule
+   - Creates a FormControl instance from a domain model
+    and binds it to a form control element.
+   - placed inside input Tag
+   -name attribute is also given
+
+  17.Directives-To manipulate dom
+       1.component Directives
+       2.structural Directives
+          *ngif==condition
+          *ngfor==let varname of array name
+           
+  18.fetching data using url id
+  .............................
+    ActivatedRoute
+    .............
+
+Provides access to information about a route associated 
+with a component that is loaded in an outlet. Use to traverse the
+ RouterState tree and extract information from nodes.
+
+ parameters
+ ..........
+ an observable of the matrix parameter scoped to this route
+
+ fetching group
+ ..............
+
+ Tansforming data using pipes
+ ............................
+ Pipes are simple functions to use in template expressions 
+ to accept an input value and return a transformed value
+
+ examples:
+ DatePipe=>	Formats a date value according to locale rules.
+ UpperCasePipe=>	Transforms text to all upper case.
+
+ creating a pipe for searching
+ .............................
+ creation=> ng g p pipes/search
+
+
+
+
+21)decorator...
+.................
+->An Angular Decorator is a function, using which we attach 
+    metadata to a class declaration, method, accessor, property, 
+    or parameter.
+    We use it to decorate components, directives,
+    Angular Modules, etc.
+
+Class decorators
+Property decorators
+Method decorators
+Parameter decorators
+
+->classdecorators
+.................
+  @ngModule
+  @component
+  @Injectable
+  @Directives
+  @Pipe
+
+->propertyDecorator
+....................
+   @input
+   @output
+   @contentChild & contentChildren
+   @viewChild & viewChildren
+   @HostBinding
+
+->Method decorators
+...................
+   @hostListener
+
+->parameter decorators
+.......................
+   @Inject
+   @host 
+   @self
+   @skipself
+   @optional
+
+->custom decorators
+...............................
+
+ )parent-child communication
+ .................................
+ @Input
+Input decorator marks the property as the input property. I.e it
+ can receive data from the parent component. The parent component 
+ uses the property binding to bind it to a component property. Whenever
+  the value in the parent component changes angular updates the value in the child component
+
+
+ 1)child to parent...
+ ....................
+  ->child decorator-@output
+    child-header
+    parent-app-component
+ @output
+ ........
+ Output decorates the property as the output property. 
+ We initialize it as an EventEmitter. The child component raises the event
+ and passes the data as the argument to the event. The parent component listens
+ to events using event binding and reads the data.
+
+ https://fonts.google.com/icons->site for angular material icons
+
+ DIRECTIVES in Angular
+ ........................
+   The Angular directive helps us to manipulate the DOM. 
+   You can change a DOM element’s appearance, behavior, or layout using the directives.
+
+   types
+
+   1-component directioves
+
+   2-structural directives
+    ngfor
+    ngSwitch
+    ngif
+
+    3-attribute directives
+      ngModel
+      ngClass-The ngClass is used to add or remove the CSS classes from an HTML element. 
+      Using the ngClass one can create dynamic styles in HTML pages
+
+    
+    for graph use high charts
+    .........................
+    https://www.highcharts.com/

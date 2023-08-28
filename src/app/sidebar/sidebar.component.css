@@ -1,0 +1,44 @@
+img{
+    border: 3px solid green;
+}
+h3{
+    text-align: center;
+    font-weight: 800;
+    font-size: 2rem;
+    letter-spacing: 2px;
+}
+p{
+    text-align: center;
+    font-weight: 800;
+}
+.pages{
+    display: flex;
+    flex-direction: column;
+}
+a{
+    text-decoration: none;
+    color: white;
+  
+    padding: 10px;
+  
+    text-align: center;
+}
+a:hover{
+    background-color: rgb(0, 0, 0);
+   box-shadow: 4px 2px 4px rgba(255, 255, 255, 0.45);
+}
+button{
+   margin: 20px 0 20px 0;
+   width: 150px;
+   height: 30px;
+   border: none;
+   background-color: rgb(127, 0, 253);
+   text-transform: uppercase;
+   font-weight: 500;
+   letter-spacing: 3px;
+   font-size: 10px;
+   color: white;
+}
+.btn-portion{
+  text-align: center;
+}

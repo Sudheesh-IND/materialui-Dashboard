@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'adminDashboard';
+  
+  sidebar:boolean=true
+  sideBarOpen(){
+    this.sidebar=!this.sidebar
+  }
 }

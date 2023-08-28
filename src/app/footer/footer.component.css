@@ -1,0 +1,11 @@
+mat-toolbar{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+p{
+    font-weight: lighter;
+    letter-spacing: 3px;
+    font-size: smaller;
+    margin-bottom: 0px;
+}

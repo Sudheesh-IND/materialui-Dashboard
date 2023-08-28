@@ -1,0 +1,33 @@
+mat-card{
+    margin: 20px;
+    width: 250px;
+    height: 300px;
+    margin-left: 40px;
+}
+.employee-portion{
+   
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+img{
+    width: 100%;
+}
+h3{
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+button{
+    margin: 10px;
+    width: 80px;
+    height: 30px;
+    border: none;
+    background-color: rgb(127, 0, 253);
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 3px;
+    font-size: 10px;
+    color: white;
+ }
